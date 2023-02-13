@@ -13,6 +13,9 @@ After the connection we will do some queries.
 
 
     public function getAll(): array{
+    /*
+    This function returns us all the information that is in the database about articles.      
+     */
         $sql = "SELECT * FROM article";
                 
         $query = $this->conn->query($sql);
@@ -25,21 +28,30 @@ After the connection we will do some queries.
         return $data;
     }
 
-    // public function getArticle($name): array{
-    //     $sql = "SELECT * FROM article where article_name = $name";
+    public function getArticle(string $id){
+    /*
+    This function returns us the specific article by id.
+    */
+        $query = "SELECT * FROM article where id = $id";
  
-    //     $query = $this->conn->query($sql);
+        $stmt = $this->conn->prepare($query);
         
-    //     $data = [];
-    //     while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-    //         $data[] = $row;
-    //     }
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if ($data === false){
+            return false;
+        }
+            
+        return $data;
+    }
 
-    //     return $data;
-    // }
 
-    // we get the data from processCollectionRequest --> ProductController
     public function create(array $data): string{
+    // we get the data from processCollectionRequest --> ProductController
+
         $query = "INSERT INTO article (article_name, length, publish_date , author)
                 VALUES (:article_name , :length, :publish_date , :author)";
                 
