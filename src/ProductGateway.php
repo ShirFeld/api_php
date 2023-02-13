@@ -32,7 +32,8 @@ After the connection we will do some queries.
     /*
     This function returns us the specific article by id.
     */
-        $query = "SELECT * FROM article where id = $id";
+        $query = "SELECT * FROM article
+                  where id = $id";
  
         $stmt = $this->conn->prepare($query);
         
@@ -53,7 +54,7 @@ After the connection we will do some queries.
     // we get the data from processCollectionRequest --> ProductController
 
         $query = "INSERT INTO article (article_name, length, publish_date , author)
-                VALUES (:article_name , :length, :publish_date , :author)";
+                  VALUES (:article_name , :length, :publish_date , :author)";
                 
         $stmt = $this->conn->prepare($query);
         /*
@@ -75,7 +76,7 @@ After the connection we will do some queries.
     This function will update the data of an article (by id).
     */
         $query = "UPDATE article  SET article_name = :article_name, length = :length, publish_date = :publish_date , author = :author
-        WHERE id = :id";
+                  WHERE id = :id";
         
         $stmt = $this->conn->prepare($query);
 
