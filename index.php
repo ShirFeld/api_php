@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+// session_start();
+
+// if ($_SESSION['id'] ==''){
+//     header("location:signup.html");
+// }
+
+
 function __autoload($class){ 
     // __DIR__ -> get the current script's directory
     require __DIR__ . "/src/$class.php";
@@ -16,11 +23,11 @@ header("Content-type: application/json; charset=UTF-8"); // convert the output t
 
 
 $parts = explode("/" , $_SERVER["REQUEST_URI"]); // takes the url and convert it to an array
-if($parts[3] != "products"){
+if($parts[4] != "products"){
     http_response_code(404);
     exit;
 }
-$id = $parts[4] ?? null;
+$id = $parts[5] ?? null;
 
 
 

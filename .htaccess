@@ -1,4 +1,3 @@
 RewriteEngine On
 # the bellow says that any url will call the index.php script
-RewriteRule . index.php  
-
+# RewriteRule . index.php  

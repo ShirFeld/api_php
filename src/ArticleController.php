@@ -74,10 +74,6 @@ class ArticleController{
 
 
 
-
-
-
-
     private function processCollectionRequest(string $method) : void{
         switch($method){
             case "GET":
