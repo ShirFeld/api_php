@@ -8,6 +8,7 @@ function __autoload($class){
 };
 
 
+set_error_handler("ErrorHandler::handleError");
 set_exception_handler("ErrorHandler::handleException"); // how errors will be handled -> by ErrorHandler
 
 header("Content-type: application/json; charset=UTF-8"); // convert the output to json

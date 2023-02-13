@@ -29,14 +29,43 @@ class ProductController{
 
             case "POST":
                 $data = (array) json_decode(file_get_contents("php://input"), true);
+
+                $errors = $this->getValidationErrors($data);
+                if ( !empty($errors)) {
+                    http_response_code(422);
+                    echo json_encode(["errors" => $errors]);
+                    break;
+                }
+
                 $id = $this->gateway->create($data);     // a new object created
 
+                http_response_code(201);
                 echo json_encode([
                     "message" => "Article created",
                     "id" => $id
                 ]);
                 break;
         }
+    }
+
+    /*
+    This method is related to method create on ProductGateway - 
+    when no variables are entered, then there is an error and here we test it.
+    */
+    private function getValidationErrors(array $data, bool $is_new = true): array{
+        $errors = [];
+        
+        if ($is_new && empty($data["article_name"])) {
+            $errors[] = "article name is required";
+        }
+        
+        if (array_key_exists("length", $data)) {
+            if (filter_var($data["length"], FILTER_VALIDATE_INT) === false) {
+                $errors[] = "length must be an integer";
+            }
+        }
+        
+        return $errors;
     }
 
 }
