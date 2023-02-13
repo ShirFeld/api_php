@@ -1,6 +1,6 @@
 <?php
 
-class ProductGateway{
+class ArticleGateway{
 /*
 The purpose of this class is to create a connection to the database.
 After the connection we will do some queries.
@@ -51,7 +51,7 @@ After the connection we will do some queries.
 
 
     public function create(array $data): string{
-    // we get the data from processCollectionRequest --> ProductController
+    // we get the data from processCollectionRequest --> ArticleController
 
         $query = "INSERT INTO article (article_name, length, publish_date , author)
                   VALUES (:article_name , :length, :publish_date , :author)";

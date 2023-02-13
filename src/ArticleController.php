@@ -1,10 +1,10 @@
 <?php
 
-class ProductController{
+class ArticleController{
 
     public $gateway;
-    public function __construct( ProductGateway $gateway){
-        // reference to ProductGateway (functions)
+    public function __construct( ArticleGateway $gateway){
+        // reference to ArticleGateway (functions)
         $this->gateway =  $gateway;
     } 
 
@@ -114,7 +114,7 @@ class ProductController{
     
     private function getValidationErrors(array $data, bool $is_new = true): array{
         /*
-        This method is related to method create on ProductGateway - (method)
+        This method is related to method create on ArticleGateway - (method)
         when no variables are entered in the url, then there is an error and here we test it.
         */
         $errors = [];

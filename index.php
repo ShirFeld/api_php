@@ -25,7 +25,7 @@ $id = $parts[4] ?? null;
 
 
 $database = new Database("localhost" , "articles" , "root" , "");
-$gateway = new ProductGateway($database);
+$gateway = new ArticleGateway($database);
 
-$controller = new ProductController($gateway);
+$controller = new ArticleController($gateway);
 $controller->processRequest($_SERVER["REQUEST_METHOD"] , $id);
