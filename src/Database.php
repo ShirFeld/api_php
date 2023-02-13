@@ -1,5 +1,6 @@
 <?php
 
+// class of database and connection method
 class Database{
     public $host;
     public $dbName;
