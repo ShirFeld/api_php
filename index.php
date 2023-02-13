@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-// session_start();
+session_start();
 
-// if ($_SESSION['id'] ==''){
+// if ($_SESSION['id'] !==''){
 //     header("location:signup.html");
 // }
 
