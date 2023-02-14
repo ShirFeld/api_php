@@ -34,7 +34,7 @@ $controller = new ArticleController($gateway);
     <ul class="nav navbar-nav">
 
       <li><a href="http://localhost/inManage/api/src/Articles.php">Articles</a></li>
-      <li><a href="http://localhost/inManage/api/src/update.php">Edit article</a></li>
+      <li><a href="http://localhost/inManage/api/src/Put.php">Edit article</a></li>
       <li><a href="http://localhost/inManage/api/src/Upload.php">Upload article</a></li>
     </ul>
   </div>
