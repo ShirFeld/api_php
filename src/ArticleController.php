@@ -23,7 +23,7 @@ class ArticleController{
 
         if (!$article) {
             http_response_code(404);
-            echo json_encode(["message" => " Article not found"]);
+            echo json_encode(["Message" => " Article not found "]);
             return;
         }
 
@@ -47,8 +47,8 @@ class ArticleController{
                 $rows = $this->gateway->update($article, $data); // rows -> If the number is 0 it means no changes
                 
                 echo json_encode([
-                    "message" => "Article $id updated",
-                    "rows" => $rows
+                    "Message" => " Article $id updated ",
+                    // "rows" => $rows
                 ]);
                 break;
 
@@ -58,8 +58,8 @@ class ArticleController{
                 $rows = $this->gateway->delete($id , $userId );
                 
                 echo json_encode([
-                    "message" => "Product $id deleted",
-                    "rows" => $rows
+                    "Message" => " Article $id deleted ",
+                    // "rows" => $rows
                 ]);
                 break;
                 

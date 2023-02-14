@@ -9,9 +9,16 @@ session_start();
 //     header("location: login.php");
 // }
 
+
+
+
+
 $database = new Database("localhost" , "articles" , "root" , "");
 $gateway = new ArticleGateway($database);
 $controller = new ArticleController($gateway);
+
+
+
 ?>
 
 
@@ -29,9 +36,9 @@ $controller = new ArticleController($gateway);
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li><a href="../User/login.php">Login</a></li>
-      <li><a href="update.php">Edit article</a></li>
-      <li><a href="Upload.php">Upload article</a></li>
-      <li><a href="Delete.php">Delete article</a></li>
+      <li><a href="http://localhost/inManage/api/src/update.php">Edit article</a></li>
+      <li><a href="http://localhost/inManage/api/src/Upload.php">Upload article</a></li>
+      <li><a href="http://localhost/inManage/api/src/Delete.php">Delete article</a></li>
     </ul>
   </div>
 </nav>
@@ -61,17 +68,28 @@ $controller = new ArticleController($gateway);
                     <input id="articleId" type="number" class="form-control" name="articleId" placeholder="article Id">
                 <!-- </div> -->
                 <br>
-                <button type="submit" class="btn-block btn-primary" name="action"> <h5> <b> Send </b></h5></button>
+                <button type="submit" class="btn-block btn-primary" name="submit"> <h5> <b> Send </b></h5></button>
                 </form>
   
                 <br>
             </div>
             </div>
             <?php
-            $articleId = $_GET["articleId"];
-            $controller->processRequest("GET" , $articleId);
-         ?>
-        </div>
+                if (isset($_GET['submit'])){
+                  $articleId = $_GET["articleId"];
+                    //by html
+                    $controller->processRequest("GET" , $articleId ,  $_SESSION['id']);
+                  }
+
+                else {
+                  $parts = explode("/" , $_SERVER["REQUEST_URI"]); // takes the url and convert it to an array
+                  $idFromUrl = $parts[5] ?? null;
+                    // by url
+                    $controller->processRequest("GET" , $idFromUrl,  $_SESSION['id']);
+
+                }
+            ?>
+            </div>
      
     </div>
     

@@ -7,7 +7,7 @@ if(isset($_SESSION["id"]))
 }
 
 
-if (isset($_GET['action'])){
+if (isset($_GET['submit'])){
   $MySQLdb = new PDO("mysql:host=127.0.0.1;dbname=articles", "root", "");
   $MySQLdb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -71,7 +71,7 @@ if (isset($_GET['action'])){
                     <input id="password" type="password" class="form-control" name="password" placeholder="Password">
                 </div>
                 <br>
-                <button type="submit" class="btn-block btn-primary" value="login" name="action"> <h5> <b> Login </b></h5></button>
+                <button type="submit" class="btn-block btn-primary" value="login" name="submit"> <h5> <b> Login </b></h5></button>
                 </form>
                 <br>
             </div>
