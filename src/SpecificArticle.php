@@ -13,6 +13,9 @@ session_start();
 $database = new Database("localhost" , "articles" , "root" , "");
 $gateway = new ArticleGateway($database);
 $controller = new ArticleController($gateway);
+
+ 
+
 ?>
 
 
@@ -30,7 +33,6 @@ $controller = new ArticleController($gateway);
   <div class="container-fluid">
     <ul class="nav navbar-nav">
     <li><a href="../User/login.php">Login</a></li>
-      <li><a href="Articles.php">Articles</a></li>
       <li><a href="Upload.php">Upload article</a></li>
       <li><a href="Delete.php">Delete article</a></li>
     </ul>
@@ -40,14 +42,37 @@ $controller = new ArticleController($gateway);
 <div class="row">
         <div class="col-md-12">
             <h1 class=" text-center" style="  color: lightblue;
-            text-shadow: 2px 2px 4px black; font-size: 60px;" > <b> Specific Article </b></h1>
+            text-shadow: 2px 2px 4px black; font-size: 60px;" > <b> Articles </b></h1>
         </div>
     </div>
-
-    <?php
-         $controller->processRequest("GET" , $id);
-    ?>
     <br> <br>
-
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+            <form action="" method="GET">
+                <br>
+                <!-- <div class="input-group"> -->
+                    <!-- <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> -->
+                    <h4>#To search a specific article enter a number and to see all the articles enter a 0</h4>
+                    <input id="articleId" type="number" class="form-control" name="articleId" placeholder="article Id">
+                <!-- </div> -->
+                <br>
+                <button type="submit" class="btn-block btn-primary" name="action"> <h5> <b> Send </b></h5></button>
+                </form>
+  
+                <br>
+            </div>
+            </div>
+            <?php
+            $articleId = $_GET["articleId"];
+            $controller->processRequest("GET" , $articleId);
+         ?>
+        </div>
+     
+    </div>
+    
+    <br> <br>
+   
 </body>
 </html>
