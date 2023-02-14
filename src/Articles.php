@@ -28,7 +28,8 @@ $controller = new ArticleController($gateway);
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-    <li><a href="../User/login.php">Login</a></li>
+      <li><a href="../User/login.php">Login</a></li>
+      <li><a href="update.php">Edit article</a></li>
       <li><a href="Upload.php">Upload article</a></li>
       <li><a href="Delete.php">Delete article</a></li>
     </ul>

@@ -31,6 +31,7 @@ $controller = new ArticleController($gateway);
     <ul class="nav navbar-nav">
 
       <li><a href="Articles.php">Articles</a></li>
+      <li><a href="update.php">Edit article</a></li>
       <li><a href="Upload.php">Upload article</a></li>
     </ul>
   </div>

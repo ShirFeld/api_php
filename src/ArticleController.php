@@ -21,9 +21,9 @@ class ArticleController{
     private function processResourceRequest(string $method , string $id) : void{
         $article = $this->gateway->getArticle($id);
 
-        if ( ! $article) {
+        if (!$article) {
             http_response_code(404);
-            echo json_encode(["message" => "Article not found"]);
+            echo json_encode(["message" => " Article not found"]);
             return;
         }
 

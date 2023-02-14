@@ -25,6 +25,7 @@ if(($_SESSION['id'] =='')){
 
 
       <li><a href="Articles.php">Articles</a></li>
+      <li><a href="update.php">Edit article</a></li>
       <li><a href="Delete.php">Delete article</a></li>
     </ul>
   </div>
