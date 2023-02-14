@@ -93,22 +93,38 @@ After the connection we will do some queries.
     }
 
 
-    public function delete(string $id): int{
+    public function delete($articleIid ,$userId ): int{
     /*
     This function deletes the data of an article (by id).
     */
         $sql = "DELETE FROM article 
-                WHERE id = :id";
+        WHERE author = $userId and id = $articleIid";
                 
         $stmt = $this->conn->prepare($sql);
         
-        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+        $stmt->bindValue(":author", $userId, PDO::PARAM_INT);
         
         $stmt->execute();
         
         return $stmt->rowCount();
     }
 
+
+    // public function delete(string $id): int{
+    //     /*
+    //     This function deletes the data of an article (by id).
+    //     */
+    //         $sql = "DELETE FROM article 
+    //                 WHERE id = :id";
+                    
+    //         $stmt = $this->conn->prepare($sql);
+            
+    //         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+            
+    //         $stmt->execute();
+            
+    //         return $stmt->rowCount();
+    //     }
 
 
 }

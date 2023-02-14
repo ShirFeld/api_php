@@ -54,7 +54,8 @@ class ArticleController{
 
 
             case "DELETE":
-                $rows = $this->gateway->delete($id);
+                $userId =  $_SESSION['id'];
+                $rows = $this->gateway->delete($id , $userId );
                 
                 echo json_encode([
                     "message" => "Product $id deleted",
