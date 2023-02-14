@@ -1,16 +1,12 @@
 <?php
-echo "update";
 require "Database.php" ;
 require "ArticleGateway.php";
 require "ArticleController.php";
-
 
 session_start();
 if(($_SESSION['id'] =='')){
     header("location: login.php");
 }
-
-
 
 
 $database = new Database("localhost" , "articles" , "root" , "");
@@ -31,8 +27,6 @@ $controller = new ArticleController($gateway);
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-
-
     <li><a href="http://localhost/inManage/api/src/Articles.php">Articles</a></li>
     <li><a href="http://localhost/inManage/api/src/Upload.php">Upload article</a></li>
       <li><a href="http://localhost/inManage/api/src/Delete.php">Delete article</a></li>
@@ -64,13 +58,25 @@ $controller = new ArticleController($gateway);
                 <textarea  style="margin-bottom :40px" rows = "10" cols = "60" name = "content">
                 </textarea>
                 <br>
-
                   <button type="submit" class="btn-block btn-primary" value="login" name="update"> <h5> <b> update </b></h5></button>
                 </form>
 
                 <br>
             </div>
             </div>
+            <?php
+              if (isset($_GET['update'])){
+
+
+                //  $sql = "DELETE FROM article 
+                // WHERE author = $userId and id = $articleIid";
+                
+                $cursor = $MySQLdb->prepare("UPDATE articles SET email = :email AND password = :password ");
+                $cursor->execute(array(":email"=>$_GET["email"], ":password"=>$_GET["password"]) );
+
+                $controller->processRequest("PATCH" ,$article, $data, $idFromUrl,  $_SESSION['id']);
+}
+            ?>
         </div>
     </div>
 </div>

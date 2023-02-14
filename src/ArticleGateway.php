@@ -50,11 +50,11 @@ After the connection we will do some queries.
     }
 
 
-    public function create(array $data): string{
+    public function create(array $data , $userId ): string{
     // we get the data from processCollectionRequest --> ArticleController
 
-        $query = "INSERT INTO article (article_name, length, publish_date , author)
-                  VALUES (:article_name , :length, :publish_date , :author)";
+        $query = "INSERT INTO article (article_name, length, publish_date , author , content)
+                  VALUES (:article_name , :length, :publish_date , $userId , content)";
                 
         $stmt = $this->conn->prepare($query);
         /*
@@ -71,19 +71,20 @@ After the connection we will do some queries.
     }
 
 
-    public function update(array $current, array $new): int{
+    public function update(array $current, array $new, $id , $userId): int{
     /*
     This function will update the data of an article (by id).
     */
-        $query = "UPDATE article  SET article_name = :article_name, length = :length, publish_date = :publish_date , author = :author
-                  WHERE id = :id";
-        
+        $query = "UPDATE article  SET article_name = :article_name, length = :length, publish_date = :publish_date , content = :content
+                   WHERE author = $userId and id = $articleIid";
+                   
+
         $stmt = $this->conn->prepare($query);
 
         $stmt->bindValue(":article_name", $new["article_name"] ?? $current["article_name"], PDO::PARAM_STR);
         $stmt->bindValue(":length", $new["length"] ?? $current["length"], PDO::PARAM_INT);
         $stmt->bindValue(":publish_date", $new["publish_date"] ?? $current["publish_date"], PDO::PARAM_STR);
-        $stmt->bindValue(":author", $new["author"] ?? $current["author"], PDO::PARAM_STR);
+        $stmt->bindValue(":content", $new["content"] ?? $current["content"], PDO::PARAM_STR);
 
         $stmt->bindValue(":id", $current["id"], PDO::PARAM_INT);
 

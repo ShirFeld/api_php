@@ -38,14 +38,14 @@ class ArticleController{
                 
                 $errors = $this->getValidationErrors($data, false);
                 
-                if ( !empty($errors)) {
+                if (!empty($errors)) {
                     http_response_code(422); // 422 ->  the server was unable to process the instructions
-                    echo json_encode(["errors" => $errors]);
+                    echo json_encode(["Errors" => $errors]);
                     break;
                 }
-                
-                $rows = $this->gateway->update($article, $data); // rows -> If the number is 0 it means no changes
-                
+
+                $userId =  $_SESSION['id'];
+                $rows = $this->gateway->update($article, $data , $id , $userId); // rows -> If the number is 0 it means no changes
                 echo json_encode([
                     "Message" => " Article $id updated ",
                     // "rows" => $rows
@@ -90,8 +90,8 @@ class ArticleController{
                     echo json_encode(["errors" => $errors]);
                     break;
                 }
-
-                $id = $this->gateway->create($data);     // a new object created
+                $userId =  $_SESSION['id'];
+                $id = $this->gateway->create($data ,$userId  );     // a new object created
 
                 http_response_code(201);
                 echo json_encode([
