@@ -6,9 +6,9 @@ require "ArticleController.php";
 
 
 session_start();
-// if(($_SESSION['id'] =='')){
-//     header("location: login.php");
-// }
+if(($_SESSION['id'] =='')){
+    header("location: login.php");
+}
 
 $database = new Database("localhost" , "articles" , "root" , "");
 $gateway = new ArticleGateway($database);
