@@ -1,10 +1,9 @@
 <?php
 
 session_start();
-
-if(isset($_SESSION["username"]))
+if(isset($_SESSION["id"]))
 {
-    Header("Location: profiles.php");
+    Header("Location: ../src/Articles.php");
 }
 
 
@@ -20,9 +19,8 @@ if (isset($_GET['action'])){
         $_SESSION['email'] = $row['email'];
         $_SESSION['userName'] = $row['userName'];
         $_SESSION['id'] = $row['id'];
-        // $_SESSION['profile'] = $row['profile'];
-        header("location: ../index.php");
-
+        // header("location: ../index.php");
+        header("location: ../src/Articles.php");
         }
         else{
         header("location: login.php");
@@ -41,6 +39,16 @@ if (isset($_GET['action'])){
 </style>
 </head>
 <body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="login.php">Home</a></li>
+      <li><a href="../src/Articles.php">Articles</a></li>
+    </ul>
+  </div>
+</nav>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">

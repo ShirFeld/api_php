@@ -23,7 +23,7 @@ header("Content-type: application/json; charset=UTF-8"); // convert the output t
 
 
 $parts = explode("/" , $_SERVER["REQUEST_URI"]); // takes the url and convert it to an array
-if($parts[4] != "products"){
+if($parts[4] != "articles"){
     http_response_code(404);
     exit;
 }
