@@ -110,21 +110,4 @@ After the connection we will do some queries.
     }
 
 
-    // public function delete(string $id): int{
-    //     /*
-    //     This function deletes the data of an article (by id).
-    //     */
-    //         $sql = "DELETE FROM article 
-    //                 WHERE id = :id";
-                    
-    //         $stmt = $this->conn->prepare($sql);
-            
-    //         $stmt->bindValue(":id", $id, PDO::PARAM_INT);
-            
-    //         $stmt->execute();
-            
-    //         return $stmt->rowCount();
-    //     }
-
-
 }

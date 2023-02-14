@@ -4,7 +4,6 @@ require "Database.php" ;
 require "ArticleGateway.php";
 require "ArticleController.php";
 
-
 session_start();
 // if(($_SESSION['id'] =='')){
 //     header("location: login.php");
