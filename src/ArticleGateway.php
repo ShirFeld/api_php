@@ -49,7 +49,6 @@ After the connection we will do some queries.
         return $data;
     }
 
-
     public function create(array $data , $userId ): string{
     // we get the data from processCollectionRequest --> ArticleController
 

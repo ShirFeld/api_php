@@ -33,24 +33,24 @@ class ArticleController{
                 echo json_encode($article);
                 break;
 
-            case "PATCH": // update
-                $data = (array) json_decode(file_get_contents("php://input"), true);
+            // case "PATCH": // update
+            //     $data = (array) json_decode(file_get_contents("php://input"), true);
                 
-                $errors = $this->getValidationErrors($data, false);
+            //     $errors = $this->getValidationErrors($data, false);
                 
-                if (!empty($errors)) {
-                    http_response_code(422); // 422 ->  the server was unable to process the instructions
-                    echo json_encode(["Errors" => $errors]);
-                    break;
-                }
+            //     if (!empty($errors)) {
+            //         http_response_code(422); // 422 ->  the server was unable to process the instructions
+            //         echo json_encode(["Errors" => $errors]);
+            //         break;
+            //     }
 
-                $userId =  $_SESSION['id'];
-                $rows = $this->gateway->update($article, $data , $id , $userId); // rows -> If the number is 0 it means no changes
-                echo json_encode([
-                    "Message" => " Article $id updated ",
-                    "rows" => $rows
-                ]);
-                break;
+            //     $userId =  $_SESSION['id'];
+            //     $rows = $this->gateway->update($article, $data , $id , $userId); // rows -> If the number is 0 it means no changes
+            //     echo json_encode([
+            //         "Message" => " Article $id updated ",
+            //         "rows" => $rows
+            //     ]);
+            //     break;
 
 
             case "DELETE":
