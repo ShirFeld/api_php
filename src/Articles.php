@@ -1,8 +1,8 @@
 <?php
 
 require "Database.php" ;
-require "ArticleGateway.php";
-require "ArticleController.php";
+require "ArticleGateway.php"; // sql queries
+require "ArticleController.php"; // api function
 error_reporting (E_ALL ^ E_NOTICE); 
 
 session_start();
@@ -55,7 +55,7 @@ $controller = new ArticleController($gateway);
                 <h4 ><strong>To see all the articles enter a 0 </strong></h4>
               </div>
               <input id="articleId" type="number" class="form-control" name="articleId" placeholder="article Id"><br>
-              <button type="submit" class="btn-block btn-primary" name="submit"> <h5> <b> Send </b></h5></button><br>
+              <button type="submit" class="btn-block btn-primary" name="Send"> <h5> <b> Send </b></h5></button><br>
             </form>
           </div>
         </div>

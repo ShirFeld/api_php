@@ -1,8 +1,8 @@
 <?php
 
 require "Database.php" ;
-require "ArticleGateway.php";
-require "ArticleController.php";
+require "ArticleGateway.php"; // sql queries
+require "ArticleController.php"; // api function
 error_reporting (E_ALL ^ E_NOTICE); 
 
 session_start();
@@ -58,7 +58,7 @@ $controller = new ArticleController($gateway);
                     <input id="publish_date" type="datetime-local" class="form-control" name="publish_date" placeholder="Publish Date"><br>
                     <label >Enter your content here</label><br>
                     <textarea  style="margin-bottom :40px" rows = "18" cols = "70" name = "content"></textarea><br>
-                    <button type="submit" class="btn-block btn-primary" value="login" name="update"> <h5> <b> update </b></h5></button>
+                    <button type="submit" class="btn-block btn-primary" value="update" name="update"> <h5> <b> update </b></h5></button>
                   </form>
                 </div>
             </div>
@@ -71,7 +71,10 @@ $controller = new ArticleController($gateway);
                   elseif(isset($_GET['id'])){
                     // by url   file.php?id=3
                     $controller->controllerUpdate("PATCH" ,$_GET["id"] ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
-      
+                  }
+                  //postMan
+                  else{
+                    $controller->processRequest("PATCH" ,$_GET["id"]);
                   }
                 ?>
             </div>

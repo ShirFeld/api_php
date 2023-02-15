@@ -1,8 +1,8 @@
 <?php
 
 require "Database.php" ;
-require "ArticleGateway.php";
-require "ArticleController.php";
+require "ArticleGateway.php"; // sql queries
+require "ArticleController.php"; // api function
 error_reporting (E_ALL ^ E_NOTICE); 
 
 session_start();

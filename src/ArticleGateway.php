@@ -59,10 +59,11 @@ After the connection we will do some queries.
         /*
         Value binding tells the component to take the value of the field from the view-model and use it
         */
+
         $stmt->bindValue(":article_name", $data["article_name"] , PDO::PARAM_STR);
-        $stmt->bindValue(":length", $data["length"] ?? 0, PDO::PARAM_INT);
-        $stmt->bindValue(":publish_date" ,($data["publish_date"]) ?? "2001-01-01 12:01:03", PDO::PARAM_STR);
-        $stmt->bindValue(":author", ($data["author"] ), PDO::PARAM_STR);
+        $stmt->bindValue(":length", $data["length"], PDO::PARAM_INT);
+        $stmt->bindValue(":publish_date" ,($data["publish_date"]), PDO::PARAM_STR);
+       
 
         $stmt->execute();
         
@@ -81,8 +82,8 @@ After the connection we will do some queries.
         
 
         if ($new["article_name"] != ""){
-            $stmt->bindValue(":article_name", $new["article_name"] , PDO::PARAM_STR);
-        }
+         $stmt->bindValue(":article_name", $new["article_name"] , PDO::PARAM_STR);
+        } 
         else{
             $stmt->bindValue(":article_name", $current["article_name"] , PDO::PARAM_STR);
         }

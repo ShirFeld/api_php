@@ -33,24 +33,24 @@ class ArticleController{
                 echo json_encode($article);
                 break;
 
-            // case "PATCH": // update
-            //     $data = (array) json_decode(file_get_contents("php://input"), true);
+            case "PATCH": // update
+                $data = (array) json_decode(file_get_contents("php://input"), true);
                 
-            //     $errors = $this->getValidationErrors($data, false);
+                $errors = $this->getValidationErrors($data, false);
                 
-            //     if (!empty($errors)) {
-            //         http_response_code(422); // 422 ->  the server was unable to process the instructions
-            //         echo json_encode(["Errors" => $errors]);
-            //         break;
-            //     }
+                if (!empty($errors)) {
+                    http_response_code(422); // 422 ->  the server was unable to process the instructions
+                    echo json_encode(["Errors" => $errors]);
+                    break;
+                }
 
-            //     $userId =  $_SESSION['id'];
-            //     $rows = $this->gateway->update($article, $data , $id , $userId); // rows -> If the number is 0 it means no changes
-            //     echo json_encode([
-            //         "Message" => " Article $id updated ",
-            //         "rows" => $rows
-            //     ]);
-            //     break;
+                $userId =  $_SESSION['id'];
+                $rows = $this->gateway->update($article, $data , $id , $userId); // rows -> If the number is 0 it means no changes
+                echo json_encode([
+                    "Message" => " Article $id updated ",
+                    "rows" => $rows
+                ]);
+                break;
 
 
             case "DELETE":
@@ -105,8 +105,24 @@ class ArticleController{
         } 
     }
 
+    // with form
+    public function create(string $method , array $data ){
+            if($method == "POST"){
+                // $data = (array) json_decode(file_get_contents("php://input"), true);
+                $userId =  $_SESSION['id'];
+                $id = $this->gateway->create($data ,$userId);     // a new object created
 
-    private function processCollectionRequest(string $method) : void{
+                http_response_code(201);
+                echo json_encode([
+                    "Message" => " Article created ",
+                    "The id is " => $id
+                ]);
+            }
+           
+            
+    }
+
+    public function processCollectionRequest(string $method) : void{
         switch($method){
             case "GET":
                 echo json_encode($this->gateway->getAll());
@@ -123,7 +139,7 @@ class ArticleController{
                 //     break;
                 // }
                 $userId =  $_SESSION['id'];
-                $id = $this->gateway->create($data ,$userId  );     // a new object created
+                $id = $this->gateway->create($data ,$userId);     // a new object created
 
                 http_response_code(201);
                 echo json_encode([
@@ -135,7 +151,6 @@ class ArticleController{
             default:
                 http_response_code(405); // status 405 -> Method Not Allowed
                 header("Allow: GET, POST");
-
         }
     }
 
