@@ -78,7 +78,6 @@ class ArticleController{
     public function controllerUpdate(string $method , $id , $name , $len , $date , $content ) : void{
         $article = $this->gateway->getArticle($id);
 
-       
         if (!$article) {
             http_response_code(404);
             echo json_encode(["Message" => " Article not found "]);
@@ -155,7 +154,7 @@ class ArticleController{
     }
 
 
-    // validation on input - not necessary now
+    // validation on input 
     private function getValidationErrors(array $data, bool $is_new = true): array{
         /*
         This method is related to method create on ArticleGateway - (method)
