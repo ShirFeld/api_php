@@ -19,7 +19,7 @@
 
 ## **3. Create Article**
 
-<img  src="/pics/2.PNG" width="600" height="500"  title="Create " />
+<img  src="/pics/3.PNG" width="600" height="500"  title="Create " />
 
 <br><br>
 
