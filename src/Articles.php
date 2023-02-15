@@ -54,24 +54,16 @@ $controller = new ArticleController($gateway);
                 <h4 ><strong>To search a specific article enter a number </strong></h4>
                 <h4 ><strong>To see all the articles enter a 0 </strong></h4>
               </div>
-              <input id="articleId" type="number" class="form-control" name="articleId" placeholder="article Id"><br>
+              <input id="id" type="number" class="form-control" name="id" placeholder="article Id"><br>
               <button type="submit" class="btn-block btn-primary" name="Send"> <h5> <b> Send </b></h5></button><br>
             </form>
           </div>
         </div>
                 <?php
-                    if (isset($_GET['submit'])){
-                      $articleId = $_GET["articleId"];
-                        //by html
+                    if (isset($_GET['Send']) || isset($_GET['id'])){
+                        $articleId = $_GET["id"];
                         $controller->processRequest("GET" , $articleId );
-                      }
-                    else {
-                      // $parts = explode("/" , $_SERVER["REQUEST_URI"]); // takes the url and convert it to an array
-                      // $idFromUrl = $parts[5] ?? null;
-                      $idFromUrl = $_GET["id"];  // file.php?id=3
-                        // by url
-                      $controller->processRequest("GET" , $idFromUrl);
-                    }
+                      }            
                 ?>
       </div>
     </div>

@@ -50,22 +50,17 @@ $controller = new ArticleController($gateway);
             <div style="text-align: center; color:#3d9aa7; margin-bottom:10px">
               <h4 ><strong>Enter an article id to delete </strong></h4>
             </div>
-            <input id="articleId" type="number" class="form-control" name="articleId" placeholder="Article Id"><br>
+            <input id="articleId" type="number" class="form-control" name="id" placeholder="Article Id"><br>
             <button type="submit" class="btn-block btn-primary" name="submit"> <h5> <b> Send </b></h5></button><br>
           </form>
         </div>
       </div>
               <?php
-              if (isset($_GET['submit'])){
-                  $articleId = $_GET["articleId"];
+              if (isset($_GET['submit']) ||  isset($_GET["id"])){
+                  $articleId = $_GET["id"];
                   //by html
                   $controller->processRequest("DELETE" , $articleId);
                 }
-              else {          
-                $idFromUrl = $_GET["id"];  // file.php?id=3
-                  // by url
-                $controller->processRequest("DELETE" , $idFromUrl);
-              }
             ?>
      </div>
     </div>

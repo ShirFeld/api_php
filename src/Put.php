@@ -64,13 +64,8 @@ $controller = new ArticleController($gateway);
             </div>
           
                 <?php
-                  if (isset($_GET['update'])){
-                    //HTML
+                  if (isset($_GET['update']) || isset($_GET['id']) ){ 
                     $controller->controllerUpdate("PATCH" ,$_GET['id'] ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
-                  }
-                  elseif(isset($_GET['id'])){
-                    // by url   file.php?id=3
-                    $controller->controllerUpdate("PATCH" ,$_GET["id"] ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
                   }
                   //postMan
                   else{
