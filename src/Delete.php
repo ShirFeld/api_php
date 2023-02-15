@@ -78,9 +78,8 @@ $controller = new ArticleController($gateway);
                 $controller->processRequest("DELETE" , $articleId);
               }
 
-            else {
-              $parts = explode("/" , $_SERVER["REQUEST_URI"]); // takes the url and convert it to an array
-              $idFromUrl = $parts[5] ?? null;
+            else {          
+              $idFromUrl = $_GET["id"];  // file.php?id=3
                 // by url
               $controller->processRequest("DELETE" , $idFromUrl);
 

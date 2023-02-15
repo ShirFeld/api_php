@@ -70,7 +70,6 @@ After the connection we will do some queries.
         return $this->conn->lastInsertId();
     }
 
-
     public function update(array $current, array $new, $id , $userId): int{
     /*
     This function will update the data of an article (by id).

@@ -46,6 +46,8 @@ $controller = new ArticleController($gateway);
         <div class="col-md-offset-3 col-md-6">
         <div class="panel panel-default">
             <div class="panel-body">
+            <div style="color:green">
+             </div>
               <form action="" method="GET">
                 <input id="id" type="number" class="form-control" name="id" placeholder="Article id">
                 <br>
@@ -63,16 +65,19 @@ $controller = new ArticleController($gateway);
                
             </div>
             </div>
-          
-
+      
             <?php
               if (isset($_GET['update'])){
                 //HTML
                 $controller->controllerUpdate("PATCH" ,$_GET['id'] ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
               }
+              elseif($_GET["id"] != ""){
+                 // by url
+                $idFromUrl = $_GET["id"];  // file.php?id=3
+                $controller->controllerUpdate("PATCH" ,$idFromUrl ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
+  
+              }
             ?>
-
-
         </div>
     </div>
 </div>

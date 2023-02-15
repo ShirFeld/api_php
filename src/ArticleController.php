@@ -48,7 +48,7 @@ class ArticleController{
                 $rows = $this->gateway->update($article, $data , $id , $userId); // rows -> If the number is 0 it means no changes
                 echo json_encode([
                     "Message" => " Article $id updated ",
-                    // "rows" => $rows
+                    "rows" => $rows
                 ]);
                 break;
 
@@ -59,7 +59,7 @@ class ArticleController{
                 
                 echo json_encode([
                     "Message" => " Article $id deleted ",
-                    // "rows" => $rows
+                    "rows" => $rows
                 ]);
                 break;
                 

@@ -74,10 +74,11 @@ $controller = new ArticleController($gateway);
                   }
 
                 else {
-                  $parts = explode("/" , $_SERVER["REQUEST_URI"]); // takes the url and convert it to an array
-                  $idFromUrl = $parts[5] ?? null;
+                  // $parts = explode("/" , $_SERVER["REQUEST_URI"]); // takes the url and convert it to an array
+                  // $idFromUrl = $parts[5] ?? null;
+                  $idFromUrl = $_GET["id"];  // file.php?id=3
                     // by url
-                    $controller->processRequest("GET" , $idFromUrl);
+                  $controller->processRequest("GET" , $idFromUrl);
                 }
             ?>
             </div>
