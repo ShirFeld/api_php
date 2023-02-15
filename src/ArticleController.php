@@ -89,12 +89,12 @@ class ArticleController{
             // update
             $data = array("id"=>$id,"article_name"=>$name,"length"=>$len,"publish_date"=>$date,"content"=>$content);
 
-            $errors = $this->getValidationErrors($data, false);
-
-            if (!empty($errors)) {
-                http_response_code(422); // 422 ->  the server was unable to process the instructions
-                echo json_encode(["Errors" => $errors]);
-            }
+            // validation
+            // $errors = $this->getValidationErrors($data, false);
+            // if (!empty($errors)) {
+            //     http_response_code(422); // 422 ->  the server was unable to process the instructions
+            //     echo json_encode(["Errors" => $errors]);
+            // }
 
             $userId =  $_SESSION['id'];
             $rows = $this->gateway->update($article, $data , $id , $userId); // rows -> If the number is 0 it means no changes
@@ -115,12 +115,13 @@ class ArticleController{
             case "POST":
                 $data = (array) json_decode(file_get_contents("php://input"), true);
 
-                $errors = $this->getValidationErrors($data);
-                if ( !empty($errors)) {
-                    http_response_code(422); // 422 ->  the server was unable to process the instructions
-                    echo json_encode(["errors" => $errors]);
-                    break;
-                }
+                // validation
+                // $errors = $this->getValidationErrors($data);
+                // if ( !empty($errors)) {
+                //     http_response_code(422); // 422 ->  the server was unable to process the instructions
+                //     echo json_encode(["errors" => $errors]);
+                //     break;
+                // }
                 $userId =  $_SESSION['id'];
                 $id = $this->gateway->create($data ,$userId  );     // a new object created
 
@@ -139,7 +140,7 @@ class ArticleController{
     }
 
 
-    
+    // validation on input - not necessary now
     private function getValidationErrors(array $data, bool $is_new = true): array{
         /*
         This method is related to method create on ArticleGateway - (method)
