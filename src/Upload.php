@@ -1,10 +1,15 @@
 <?php
 
-echo "upload";
 session_start();
 if(($_SESSION['id'] =='')){
     header("location: login.php");
 }
+
+require "Database.php" ;
+require "ArticleGateway.php";
+require "ArticleController.php";
+error_reporting (E_ALL ^ E_NOTICE); 
+
 ?>
 
 

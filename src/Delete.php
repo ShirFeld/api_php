@@ -3,7 +3,7 @@
 require "Database.php" ;
 require "ArticleGateway.php";
 require "ArticleController.php";
-
+error_reporting (E_ALL ^ E_NOTICE); 
 
 session_start();
 if(($_SESSION['id'] =='')){
