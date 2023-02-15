@@ -24,9 +24,9 @@ if(($_SESSION['id'] =='')){
     <ul class="nav navbar-nav">
 
 
-      <li><a href="Articles.php">Articles</a></li>
-      <li><a href="update.php">Edit article</a></li>
-      <li><a href="Delete.php">Delete article</a></li>
+    <li><a href="http://localhost/inManage/api/src/Articles.php">Articles</a></li>
+      <li><a href="http://localhost/inManage/api/src/Put.php">Edit article</a></li>
+      <li><a href="http://localhost/inManage/api/src/Delete.php">Delete article</a></li>
     </ul>
   </div>
 </nav>

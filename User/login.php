@@ -1,7 +1,13 @@
 <?php
 
 session_start();
-if(isset($_SESSION["id"]))
+// if(isset($_SESSION["id"]))
+// {
+//     // Header("Location: ../src/Articles.php");
+//     Header("Location: temp.php");
+// }
+
+if($_SESSION["id"] != "")
 {
     Header("Location: ../src/Articles.php");
 }

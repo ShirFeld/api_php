@@ -7,7 +7,7 @@ require "ArticleController.php";
 
 session_start();
 if(($_SESSION['id'] =='')){
-    header("location: login.php");
+    header("location: ../User/login.php");
 }
 
 
@@ -73,7 +73,7 @@ $controller = new ArticleController($gateway);
 
             <?php
             if (isset($_GET['submit'])){
-              $articleId = $_GET["articleId"];
+                $articleId = $_GET["articleId"];
                 //by html
                 $controller->processRequest("DELETE" , $articleId ,  $_SESSION['id']);
               }

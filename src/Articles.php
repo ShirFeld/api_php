@@ -5,20 +5,16 @@ require "ArticleGateway.php";
 require "ArticleController.php";
 
 session_start();
+// $_SESSION['id'] ="";
+
+
 // if(($_SESSION['id'] =='')){
 //     header("location: login.php");
 // }
 
-
-
-
-
 $database = new Database("localhost" , "articles" , "root" , "");
 $gateway = new ArticleGateway($database);
 $controller = new ArticleController($gateway);
-
-
-
 ?>
 
 
@@ -85,10 +81,7 @@ $controller = new ArticleController($gateway);
                 }
             ?>
             </div>
-     
     </div>
-    
     <br> <br>
-   
 </body>
 </html>
