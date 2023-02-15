@@ -75,19 +75,26 @@ After the connection we will do some queries.
     /*
     This function will update the data of an article (by id).
     */
-        $query = "UPDATE article  SET article_name = :article_name, length = :length, publish_date = :publish_date , content = :content
-                   WHERE author = $userId and id = $articleIid";
+
+        print_r($current["id"] . " current[id] ");
+        echo("!!!!!!!!!!!!!!!!!!!!!!!!!!!!. <br>" );
+        print_r($id ." id ");
+
+        $query = "UPDATE article SET article_name = :article_name, length = :length, publish_date = :publish_date , content = :content
+                   WHERE author = $userId and id = :id";
                    
-
+                   
         $stmt = $this->conn->prepare($query);
-
+        
         $stmt->bindValue(":article_name", $new["article_name"] ?? $current["article_name"], PDO::PARAM_STR);
         $stmt->bindValue(":length", $new["length"] ?? $current["length"], PDO::PARAM_INT);
-        $stmt->bindValue(":publish_date", $new["publish_date"] ?? $current["publish_date"], PDO::PARAM_STR);
+        // $stmt->bindValue(":publish_date", $new["publish_date"] ?? $current["publish_date"], PDO::PARAM_STR);
+        $stmt->bindValue(":publish_date", $current["publish_date"], PDO::PARAM_STR);
         $stmt->bindValue(":content", $new["content"] ?? $current["content"], PDO::PARAM_STR);
 
-        $stmt->bindValue(":id", $current["id"], PDO::PARAM_INT);
-
+        // $stmt->bindValue(":id", $current["id"], PDO::PARAM_INT);
+        $stmt->bindValue(":id",$id, PDO::PARAM_INT);
+        
         $stmt->execute();
 
         return $stmt->rowCount();

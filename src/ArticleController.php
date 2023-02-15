@@ -72,7 +72,35 @@ class ArticleController{
 
 
     }
+    public function controllerAdd(string $method , $id , $name , $len , $date , $content ) : void{
+        $article = $this->gateway->getArticle($id);
 
+       
+        if (!$article) {
+            http_response_code(404);
+            echo json_encode(["Message" => " Article not found "]);
+            return;
+        }
+
+        if ($method == "PATCH" ){
+            // update
+            $data = array($id, $name, $len , $date , $content);
+
+            $errors = $this->getValidationErrors($data, false);
+
+            if (!empty($errors)) {
+                http_response_code(422); // 422 ->  the server was unable to process the instructions
+                echo json_encode(["Errors" => $errors]);
+            }
+
+            $userId =  $_SESSION['id'];
+            $rows = $this->gateway->update($article, $data , $id , $userId); // rows -> If the number is 0 it means no changes
+            echo json_encode([
+                "Message" => " Article $id updated ",
+                "rows" => $rows
+            ]);
+        } 
+    }
 
 
     private function processCollectionRequest(string $method) : void{

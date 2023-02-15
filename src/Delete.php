@@ -60,7 +60,7 @@ $controller = new ArticleController($gateway);
                     </div>
 
                     
-                    <input id="articleId" type="number" class="form-control" name="articleId" placeholder="article Id">
+                    <input id="articleId" type="number" class="form-control" name="articleId" placeholder="Article Id">
                 <!-- </div> -->
                 <br>
                 <button type="submit" class="btn-block btn-primary" name="submit"> <h5> <b> Send </b></h5></button>
@@ -75,14 +75,14 @@ $controller = new ArticleController($gateway);
             if (isset($_GET['submit'])){
                 $articleId = $_GET["articleId"];
                 //by html
-                $controller->processRequest("DELETE" , $articleId ,  $_SESSION['id']);
+                $controller->processRequest("DELETE" , $articleId);
               }
 
             else {
               $parts = explode("/" , $_SERVER["REQUEST_URI"]); // takes the url and convert it to an array
               $idFromUrl = $parts[5] ?? null;
                 // by url
-              $controller->processRequest("DELETE" , $idFromUrl,  $_SESSION['id']);
+              $controller->processRequest("DELETE" , $idFromUrl);
 
             }
            ?>

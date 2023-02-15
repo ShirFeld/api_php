@@ -8,7 +8,6 @@ if(($_SESSION['id'] =='')){
     header("location: ../User/login.php");
 }
 
-
 $database = new Database("localhost" , "articles" , "root" , "");
 $gateway = new ArticleGateway($database);
 $controller = new ArticleController($gateway);
@@ -48,35 +47,35 @@ $controller = new ArticleController($gateway);
         <div class="panel panel-default">
             <div class="panel-body">
               <form action="" method="GET">
+                <input id="id" type="number" class="form-control" name="id" placeholder="Article id">
+                <br>
                 <input id="article_name" type="text" class="form-control" name="article_name" placeholder="Article name">
                 <br>
                 <input id="length" type="number" class="form-control" name="length" placeholder="Minutes Long">
                 <br>
-                <input id="publish_date" type="date" class="form-control" name="publish_date" placeholder="Publish Date">
+                <input id="publish_date" type="datetime-local" class="form-control" name="publish_date" placeholder="Publish Date">
                 <br>
                 <label >Enter your content here</label><br>
-                <textarea  style="margin-bottom :40px" rows = "10" cols = "60" name = "content">
+                <textarea  style="margin-bottom :40px" rows = "20" cols = "70" name = "content">
                 </textarea>
                 <br>
                   <button type="submit" class="btn-block btn-primary" value="login" name="update"> <h5> <b> update </b></h5></button>
-                </form>
+              </form>
+               
+            </div>
+            </div>
+          
 
-                <br>
-            </div>
-            </div>
             <?php
               if (isset($_GET['update'])){
 
-
-                //  $sql = "DELETE FROM article 
-                // WHERE author = $userId and id = $articleIid";
-                
-                $cursor = $MySQLdb->prepare("UPDATE articles SET email = :email AND password = :password ");
-                $cursor->execute(array(":email"=>$_GET["email"], ":password"=>$_GET["password"]) );
-
-                $controller->processRequest("PATCH" ,$article, $data, $idFromUrl,  $_SESSION['id']);
-}
+                // $cursor = $MySQLdb->prepare("UPDATE articles SET email = :email AND password = :password ");
+                // $cursor->execute(array(":email"=>$_GET["email"], ":password"=>$_GET["password"]) );
+                $controller->controllerAdd("PATCH" ,$_GET['id'] ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
+              }
             ?>
+
+
         </div>
     </div>
 </div>

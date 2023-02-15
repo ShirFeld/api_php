@@ -70,14 +70,14 @@ $controller = new ArticleController($gateway);
                 if (isset($_GET['submit'])){
                   $articleId = $_GET["articleId"];
                     //by html
-                    $controller->processRequest("GET" , $articleId ,  $_SESSION['id']);
+                    $controller->processRequest("GET" , $articleId );
                   }
 
                 else {
                   $parts = explode("/" , $_SERVER["REQUEST_URI"]); // takes the url and convert it to an array
                   $idFromUrl = $parts[5] ?? null;
                     // by url
-                    $controller->processRequest("GET" , $idFromUrl,  $_SESSION['id']);
+                    $controller->processRequest("GET" , $idFromUrl);
                 }
             ?>
             </div>

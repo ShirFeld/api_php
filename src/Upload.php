@@ -8,7 +8,6 @@ if(($_SESSION['id'] =='')){
 ?>
 
 
-
 <html lang="en">
 <head>
   <title>Login</title>
