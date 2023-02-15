@@ -72,7 +72,10 @@ class ArticleController{
 
 
     }
-    public function controllerAdd(string $method , $id , $name , $len , $date , $content ) : void{
+
+
+    // for update method ->html
+    public function controllerUpdate(string $method , $id , $name , $len , $date , $content ) : void{
         $article = $this->gateway->getArticle($id);
 
        
@@ -84,7 +87,7 @@ class ArticleController{
 
         if ($method == "PATCH" ){
             // update
-            $data = array($id, $name, $len , $date , $content);
+            $data = array("id"=>$id,"article_name"=>$name,"length"=>$len,"publish_date"=>$date,"content"=>$content);
 
             $errors = $this->getValidationErrors($data, false);
 

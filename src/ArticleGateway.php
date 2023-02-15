@@ -75,32 +75,45 @@ After the connection we will do some queries.
     /*
     This function will update the data of an article (by id).
     */
-
-        print_r($current["id"] . " current[id] ");
-        echo("!!!!!!!!!!!!!!!!!!!!!!!!!!!!. <br>" );
-        print_r($id ." id ");
-
+      
         $query = "UPDATE article SET article_name = :article_name, length = :length, publish_date = :publish_date , content = :content
-                   WHERE author = $userId and id = :id";
-                   
+                  WHERE author = $userId and id = :id";    
                    
         $stmt = $this->conn->prepare($query);
         
-        $stmt->bindValue(":article_name", $new["article_name"] ?? $current["article_name"], PDO::PARAM_STR);
-        $stmt->bindValue(":length", $new["length"] ?? $current["length"], PDO::PARAM_INT);
-        // $stmt->bindValue(":publish_date", $new["publish_date"] ?? $current["publish_date"], PDO::PARAM_STR);
-        $stmt->bindValue(":publish_date", $current["publish_date"], PDO::PARAM_STR);
-        $stmt->bindValue(":content", $new["content"] ?? $current["content"], PDO::PARAM_STR);
+
+        if ($new["article_name"] != ""){
+            $stmt->bindValue(":article_name", $new["article_name"] , PDO::PARAM_STR);
+        }
+        else{
+            $stmt->bindValue(":article_name", $current["article_name"] , PDO::PARAM_STR);
+        }
+        if($new["length"] !=""){
+            $stmt->bindValue(":length", $new["length"] , PDO::PARAM_INT);
+        }
+        else{
+            $stmt->bindValue(":length", $current["length"] , PDO::PARAM_INT);
+        }
+        if($new["publish_date"] !=""){
+            $stmt->bindValue(":publish_date", $new["publish_date"], PDO::PARAM_STR);
+        }
+        else{
+            $stmt->bindValue(":publish_date", $current["publish_date"], PDO::PARAM_STR);
+        }
+        if($new["content"] !=""){
+            $stmt->bindValue(":content",$new["content"] , PDO::PARAM_STR);
+        }
+        else{
+            $stmt->bindValue(":content",$current["content"] , PDO::PARAM_STR);    
+        }
 
         // $stmt->bindValue(":id", $current["id"], PDO::PARAM_INT);
         $stmt->bindValue(":id",$id, PDO::PARAM_INT);
         
         $stmt->execute();
 
-        return $stmt->rowCount();
+        return $stmt->rowCount();  // tell us if something changed
     }
-
-
     public function delete($articleIid ,$userId ): int{
     /*
     This function deletes the data of an article (by id).

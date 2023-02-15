@@ -56,10 +56,9 @@ $controller = new ArticleController($gateway);
                 <input id="publish_date" type="datetime-local" class="form-control" name="publish_date" placeholder="Publish Date">
                 <br>
                 <label >Enter your content here</label><br>
-                <textarea  style="margin-bottom :40px" rows = "20" cols = "70" name = "content">
-                </textarea>
+                <textarea  style="margin-bottom :40px" rows = "20" cols = "70" name = "content"></textarea>
                 <br>
-                  <button type="submit" class="btn-block btn-primary" value="login" name="update"> <h5> <b> update </b></h5></button>
+                <button type="submit" class="btn-block btn-primary" value="login" name="update"> <h5> <b> update </b></h5></button>
               </form>
                
             </div>
@@ -68,10 +67,8 @@ $controller = new ArticleController($gateway);
 
             <?php
               if (isset($_GET['update'])){
-
-                // $cursor = $MySQLdb->prepare("UPDATE articles SET email = :email AND password = :password ");
-                // $cursor->execute(array(":email"=>$_GET["email"], ":password"=>$_GET["password"]) );
-                $controller->controllerAdd("PATCH" ,$_GET['id'] ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
+                //HTML
+                $controller->controllerUpdate("PATCH" ,$_GET['id'] ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
               }
             ?>
 
