@@ -2,6 +2,7 @@
 require "Database.php" ;
 require "ArticleGateway.php";
 require "ArticleController.php";
+ error_reporting (E_ALL ^ E_NOTICE); 
 
 session_start();
 if(($_SESSION['id'] =='')){
@@ -71,10 +72,9 @@ $controller = new ArticleController($gateway);
                 //HTML
                 $controller->controllerUpdate("PATCH" ,$_GET['id'] ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
               }
-              elseif($_GET["id"] != ""){
-                 // by url
-                $idFromUrl = $_GET["id"];  // file.php?id=3
-                $controller->controllerUpdate("PATCH" ,$idFromUrl ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
+              elseif(isset($_GET['id'])){
+                 // by url   file.php?id=3
+                $controller->controllerUpdate("PATCH" ,$_GET["id"] ,$_GET['article_name'] , $_GET['length'] , $_GET['publish_date'], $_GET['content']);
   
               }
             ?>
