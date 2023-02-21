@@ -2,7 +2,7 @@
 
 session_start();
 if(($_SESSION['id'] =='')){
-    header("location: login.php");
+    header("location: ../User/login.php");
 }
 
 require "Database.php" ;

@@ -56,7 +56,7 @@ if (isset($_GET['submit'])){
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class=" text-center" style="  color: lightblue text-shadow: 2px 2px 4px black; font-size: 70px;" > <b> Login </b></h1>
+                <h1 class=" text-center" style="  color: lightblue; text-shadow: 2px 2px 4px black; font-size: 70px;"> <b> Login </b></h1>
             </div>
         </div>
         <br> <br>

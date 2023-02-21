@@ -113,6 +113,8 @@ After the connection we will do some queries.
 
         return $stmt->rowCount();  // tell us if something changed
     }
+
+    
     public function delete($articleIid ,$userId ): int{
     /*
     This function deletes the data of an article (by id).

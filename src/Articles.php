@@ -7,8 +7,6 @@ error_reporting (E_ALL ^ E_NOTICE);
 
 session_start();
 // $_SESSION['id'] ="";
-
-
 // if(($_SESSION['id'] =='')){
 //     header("location: login.php");
 // }
